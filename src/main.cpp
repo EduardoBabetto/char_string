@@ -99,9 +99,73 @@ void textChar(){
   char idadeTexto[] = "45"; // 52,52, \0
   int idade = atoi(idadeTexto);
   Serial.println(idade);
-  
+
 }
 
 void textoString(){
+  //* ============================================
+  //* USANDO String
+  //* ============================================
+  
+  String nome = "Thiago";
+  String curso = "Logica de programacao";
+  String mensagem = "Ola";
+
+  //* Concatenando String
+  mensagem = mensagem + "," + "! Bem-Vindo ao curso de " + curso + ".";
+
+  Serial.println(mensagem);
+
+//* Tamanho da String
+int tamanhoMensagem = mensagem.length();
+Serial.print("Tamanho da String em letras: ");
+Serial.println(tamanhoMensagem);
+
+//* Acessando um caractere em uma posicao especifica 
+char primeiraLetra = mensagem.charAt(0);
+Serial.print("Primeira letra: ");
+Serial.println(primeiraLetra);
+
+//*Tambem e possivel acessar em colchetes
+char segundaLetra = mensagem[1];
+Serial.println(segundaLetra);
+
+
+//* Procurando um texto dentro da string
+int posicaoTextoProcurado = mensagem.indexOf("curso");
+Serial.println(posicaoTextoProcurado);
+
+
+//* Extraindo um texto dentro da String
+int inicioNomeCurso = posicaoTextoProcurado + 9; //* posicao da palavra curso +9 caracteres
+Serial.println(mensagem.substring(inicioNomeCurso, tamanhoMensagem-1)); //* -1 tira o ponto final
+
+//* Substituindo um texto dentro da String
+mensagem.replace("Ola,",("Oi, tudo bem? "));
+Serial.println(mensagem);
+
+//* Convertendo para maiusculas
+mensagem.toUpperCase();
+Serial.println(mensagem);
+
+//* Convertendo tudo para minusculas
+mensagem.toLowerCase();
+Serial.println(mensagem);
+
+//* Convertendo texto numerico para inteiro
+String textoNumero ="123";
+int numero = textoNumero.toInt();
+Serial.println(numero * 2);
+
+//* Verificando se a String esta vazia
+String textoVazio = "";
+if(textoVazio.length() == 0) Serial.println("O texto esta vazio");
+
+//* Convertendo String para const char*
+//* e util quando alguma biblioteca espera texto estilo C
+const char* textoComoChar = mensagem.c_str();
+Serial.println(textoComoChar);
+
+
 
 }
