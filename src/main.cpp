@@ -100,6 +100,57 @@ void textChar(){
   int idade = atoi(idadeTexto);
   Serial.println(idade);
 
+  //* Montando texto
+  char buffer[20];
+  char* local ="Sala de aula";
+  float temperatura = 26.4;
+  int umidade = 58;
+  //* \n mudanca de linha
+  //* \r retorno ao comeco da linha
+  //*snprintf monta o texto dentro de um vetor de char
+  //! Sala de aula | Temp.: | Umid.: 58%
+  snprintf(buffer,sizeof(buffer),"%s | Temp: %.1f | Umid: %d %% \n\r", local, temperatura, umidade); 
+
+  Serial.print(buffer);
+  Serial.printf("O tamanho do buffer eh %lu \n\r", sizeof(buffer));
+  //* snprintf monta um texto dentro de um vetor de char
+  //* Sintaxe: snprintf(variavelOndeSeraMontadoOTexto, tamanhoMaximoDoTexto, TextoComFormatacao, ItensDeFormado)
+  //* Isso eh muito util quando depois voce quer:
+  //* -salvar o texto em uma variavel
+  //* -mandar para um display
+  //* -Imprimir na serial
+  //* -Enviar por MQTT (IoT)
+  //*
+  //* ESPECIFICADORES
+  //* 
+  //* %d ou %i -int
+  //* %u -unsigned int
+  //* %ld -long
+  //* %lu -unsigned long
+  //* %f -float
+  //* %e -notacao cientifica
+  //* %g -float, formato mais curto
+  //* %c -char
+  //* %s -char* (string)
+  //* %x ou %X -Hexadecimal minusculo/maisculo
+  //* %o -octal
+  //* %p -ponteiro
+  //* %% -o proprio %
+  //*
+  //*
+  //* Flag, largura, e precisao
+  //* %5d -imprime com largura minima de 5 alinhado a direita [    3] [  100] [100000]
+  //* %-4d -imprime com largura minima de 4, alinhando a esquerda [3   ] [100 ] [1234567]
+  //* %03d -completa com zeros a esquerda, [003]
+  //* %+d -sempre mostra o sinal [+3] [-3]
+  //* %.2f -2 casas decimais num float 
+  //* %4.2f -largura minima 4 a direita com 2 casas decimais
+  //* %02X -hexadecimal com 2 digitos [0F] [3A] 
+  //* %#x -imprime o prefixo 0x [0x2a] [0xF]
+  //* %.3s -somente os 3 primeiros caracteres da String
+  //* %*d -largura passada como argumento ex: snprintf(buffer, sizeof(buffer), "numero %*d", largura, numero)
+  //* Serial.print(buffer) -> [  9]
+
 }
 
 void textoString(){
